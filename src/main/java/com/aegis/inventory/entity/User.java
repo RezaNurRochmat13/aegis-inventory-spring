@@ -37,6 +37,9 @@ public class User extends Auditing {
     @Column(name = "role")
     private String role;
 
+    @Column(name = "is_active")
+    private Boolean isActive;
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Transaction> transactions = new ArrayList<>();
 }
