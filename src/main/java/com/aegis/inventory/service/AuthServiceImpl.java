@@ -36,7 +36,7 @@ public class AuthServiceImpl implements AuthService {
         user.setEmail(payload.getEmail());
         user.setPassword(passwordEncoder.encode(payload.getPassword()));
         user.setRole(payload.getRole());
-        user.setActive(false);
+        user.setIsActive(false);
 
         return userRepository.save(user);
     }
@@ -48,6 +48,6 @@ public class AuthServiceImpl implements AuthService {
         if (!passwordEncoder.matches(payload.getPassword(), user.getPassword())) {
             throw new RuntimeException("Invalid username or password");
         }
-        return jwtUtil.generateToken(user.getUsername());
+        return jwtUtil.generateToken(user.getUsername(), user.getRole());
     }
 }
