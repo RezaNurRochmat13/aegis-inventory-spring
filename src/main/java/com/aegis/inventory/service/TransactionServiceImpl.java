@@ -74,6 +74,7 @@ public class TransactionServiceImpl implements TransactionService {
         transaction.setUser(user);
         transaction.setProduct(product);
         transaction.setTotalPrice(payload.getTotalPrice());
+        transaction.setOrderStatus(Transaction.OrderStatus.PENDING);
 
         return transactionRepository.save(transaction);
     }
