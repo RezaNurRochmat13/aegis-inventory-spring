@@ -4,20 +4,23 @@ Aegis Inventory is application to manage data inventory from manufacture.
 ## Architecture
 Architecture of the application.
 ```bash
+- COnfiguration +> package for handling configuration logic.
 - Presenter => package for handling presentation logic.
 - Service => package for handling bussiness logic.
 - Repository => package for handling database operations.
 - Exception => package for handling custom exception runtime.
 - Entity => package for handling database models.
+- Util => package for handling util logic.
 ```
 
 ## Technology
 Technology for built the application.
 ```bash
 - Java 17
-- Spring Boot 3.4.1
+- Spring Boot 3.4.0
 - Spring Boot Web
 - Spring Boot Hibernate
+- Spring Security
 - Lombok
 - PostgreSQL
 ```
