@@ -52,6 +52,8 @@ public class TransactionServiceImpl implements TransactionService {
             throw new InsufficientProductStock("Insufficient product stock with id :" + product.getId());
         }
 
+        product.setStock(product.getStock() - 1);
+
         Transaction transaction = new Transaction();
         transaction.setOrderDate(LocalDateTime.now().toString());
         transaction.setUser(user);
