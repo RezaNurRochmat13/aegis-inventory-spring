@@ -2,6 +2,7 @@ package com.aegis.inventory.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -17,8 +18,8 @@ public class SecurityConfiguration {
         http.csrf().disable()
                 .authorizeHttpRequests()
                 .requestMatchers("/api/v1/auth/login", "/api/v1/auth/register").permitAll()
-                .requestMatchers("/api/v1/**").hasRole("ADMIN")
-                .requestMatchers("/api/v1/login", "/api/v1/transactions").hasRole("USER")
+                .requestMatchers("/api/v1/**").hasAuthority("ADMIN")
+                .requestMatchers("/api/v1/login", "/api/v1/transactions").hasAuthority("CASHIER")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().disable();
@@ -28,5 +29,9 @@ public class SecurityConfiguration {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
 }
