@@ -36,6 +36,8 @@ Main features on application
 ```bash
 - Auth Login and Register
 - Products
+- Categories
+- Users
 - Transactions
 ```
 
