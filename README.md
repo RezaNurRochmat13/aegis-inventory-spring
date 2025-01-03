@@ -33,7 +33,6 @@ Main features on application
 - Auth Login and Register
 - Products
 - Transactions
-- Reporting
 ```
 
 ## How to run
