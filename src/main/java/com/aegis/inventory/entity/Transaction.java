@@ -13,7 +13,7 @@ import java.util.UUID;
 @Setter
 public class Transaction extends Auditing {
     public enum OrderStatus {
-        PENDING, COMPLETED, CANCELLED
+        PENDING, COMPLETED, CANCELLED, REFUND
     }
 
     public OrderStatus getOrderStatus() {

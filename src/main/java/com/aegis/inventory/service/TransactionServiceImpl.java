@@ -72,6 +72,10 @@ public class TransactionServiceImpl implements TransactionService {
         Product product = productRepository.findById(payload.getProduct().getId())
                 .orElseThrow(() -> new ResourceNotFound("Product not found with id + " + payload.getProduct().getId()));
 
+        if (payload.getOrderStatus() == Transaction.OrderStatus.REFUND) {
+            product.setStock(product.getStock() + 1);
+        }
+
         transaction.setOrderDate(LocalDateTime.now().toString());
         transaction.setUser(user);
         transaction.setProduct(product);
