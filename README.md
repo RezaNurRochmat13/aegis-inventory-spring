@@ -27,7 +27,8 @@ Technology for built the application.
 
 ## Database design
 Database design of the application
-![ERD](https://github.com/user-attachments/assets/fe27f620-7b15-436f-a2cc-f22dcfa16c80)
+![ERD](https://github.com/user-attachments/assets/2f3bff34-a7e5-4b46-bbd3-fd97c06714f2)
+
 
 
 ## Main Features
