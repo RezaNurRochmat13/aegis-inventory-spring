@@ -17,4 +17,12 @@ public class UserServiceImpl implements UserService {
     public List<User> findAllActiveUsers() {
         return userRepository.findAllActiveUsers();
     }
+
+    @Override
+    public User activateUser(String username) {
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("User not found with username " + username));
+        user.setIsActive(true);
+        return userRepository.save(user);
+    }
 }

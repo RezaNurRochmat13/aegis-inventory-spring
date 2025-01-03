@@ -48,6 +48,11 @@ public class AuthServiceImpl implements AuthService {
         if (!passwordEncoder.matches(payload.getPassword(), user.getPassword())) {
             throw new RuntimeException("Invalid username or password");
         }
+
+        if (!user.getIsActive()) {
+            throw new RuntimeException("User is not active");
+        }
+
         return jwtUtil.generateToken(user.getUsername(), user.getRole());
     }
 }

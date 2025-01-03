@@ -4,6 +4,7 @@ import com.aegis.inventory.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
@@ -20,6 +21,14 @@ public class UserPresenter {
         Map<String, Object> response = new HashMap<>();
         response.put("status", "success");
         response.put("data", userService.findAllActiveUsers());
+        return response;
+    }
+
+    @GetMapping("/users/activate-user")
+    public Map<String, Object> activateUser(@RequestParam(value = "username") String username) {
+        Map<String, Object> response = new HashMap<>();
+        response.put("status", "success");
+        response.put("data", userService.activateUser(username));
         return response;
     }
 }
